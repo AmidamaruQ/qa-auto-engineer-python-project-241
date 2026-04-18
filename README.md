@@ -9,7 +9,3 @@
 gendiff file1.json file2.json
 gendiff --format stylish file1.yml file2.yml
 ```
-
-## Asciinema
-
-Add an asciinema demo here after recording a terminal session with `gendiff`.
