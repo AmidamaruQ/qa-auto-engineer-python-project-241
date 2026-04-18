@@ -5,6 +5,7 @@ import sys
 def test_cli_prints_diff(test_data_dir):
     first_file = test_data_dir / "file1.json"
     second_file = test_data_dir / "file2.json"
+    expected = (test_data_dir / "expected_cli_output.txt").read_text().rstrip("\n") + "\n"
 
     completed = subprocess.run(
         [sys.executable, "-m",
@@ -14,12 +15,4 @@ def test_cli_prints_diff(test_data_dir):
         check=True,
     )
 
-    assert completed.stdout == """{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}
-"""
+    assert completed.stdout == expected

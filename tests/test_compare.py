@@ -24,15 +24,7 @@ def test_get_diffs_tree_builds_expected_statuses():
 def test_generate_diff_json(test_data_dir):
     first_file = test_data_dir / "file1.json"
     second_file = test_data_dir / "file2.json"
-
-    expected = """{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}"""
+    expected = (test_data_dir / "expected_diff.txt").read_text().rstrip("\n")
 
     assert generate_diff(first_file, second_file) == expected
 
@@ -40,14 +32,6 @@ def test_generate_diff_json(test_data_dir):
 def test_generate_diff_yaml(test_data_dir):
     first_file = test_data_dir / "file1.yml"
     second_file = test_data_dir / "file2.yml"
-
-    expected = """{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}"""
+    expected = (test_data_dir / "expected_diff.txt").read_text().rstrip("\n")
 
     assert generate_diff(first_file, second_file) == expected
